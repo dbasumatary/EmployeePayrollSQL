@@ -46,3 +46,10 @@ SELECT * FROM employee_payroll;
 |  2 | Kundan  | 200000 | 2023-03-13 |
 |  3 | Shubham | 250000 | 2023-03-14 |
 +----+---------+--------+------------+*/
+
+/****************************************************************************************************************/
+
+/*UC5: Retrieve salary data*/
+SELECT Salary FROM employee_payroll where Name = "Kundan";       /*Show salary details for the name 'Kundan'*/
+SELECT * FROM employee_payroll WHERE Start_Date BETWEEN CAST('2023-03-12' AS DATE)AND DATE(NOW()); /*Display employee details in between the dates*/
+ 
