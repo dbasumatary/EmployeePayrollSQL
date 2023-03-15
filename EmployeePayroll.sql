@@ -57,7 +57,7 @@ SELECT * FROM employee_payroll;
 SELECT Salary FROM employee_payroll where Name = "Kundan";       /*Show salary details for the name 'Kundan'*/
 SELECT * FROM employee_payroll WHERE Start_Date BETWEEN CAST('2023-03-12' AS DATE)AND DATE(NOW()); /*Display employee details in between the dates*/
  
- /****************************************************************************************************************/
+/****************************************************************************************************************/
 
 /*UC6: Add new column Gender and setting the respective genders*/
 ALTER TABLE employee_payroll ADD COLUMN Gender char(1) AFTER Name;            /*Column Gender will be added after column Name*/
@@ -76,3 +76,13 @@ SELECT * FROM employee_payroll;
 |  4 | Tanuja  | F      | 210000 | 2023-03-12 |
 |  5 | Raima   | F      | 190000 | 2023-03-15 |
 +----+---------+--------+--------+------------+*/
+
+/****************************************************************************************************************/
+
+/*UC7: Find sum, avg, min, max and number of male and female employees*/
+SELECT SUM(Salary) FROM employee_payroll WHERE Gender = 'M' GROUP BY Gender;    /*Sum of salaries of Gender M*/
+SELECT SUM(Salary) FROM employee_payroll WHERE Gender = 'F' GROUP BY Gender;    /*Sum of salaries of Gender F*/
+SELECT AVG(Salary) FROM employee_payroll GROUP BY Gender;                       /*Average salaries of both M and F*/
+SELECT MIN(Salary) FROM employee_payroll GROUP BY Gender;                       /*Min salary of employees of both Gender*/
+SELECT MAX(Salary) FROM employee_payroll GROUP BY Gender;                       /*Max salary of employees of both Gender*/
+SELECT Gender, COUNT(Gender) FROM employee_payroll GROUP BY Gender;             /*Total count of employees of both Gender*/
