@@ -24,3 +24,12 @@ DESCRIBE employee_payroll;               /*This will show the empty table shown 
 | Salary     | double       | YES  |     | NULL    |                |
 | Start_Date | date         | YES  |     | NULL    |                |
 +------------+--------------+------+-----+---------+----------------+*/
+
+/****************************************************************************************************************/
+
+/*UC3: Insert employee payroll data in table*/
+INSERT INTO employee_payroll ( Name, Salary, Start_Date) values
+		( 'Rahul', 150000.00, '2023-03-11'),
+		( 'Kundan', 200000.00, '2023-03-13'),
+		( 'Shubham', 250000.00, '2023-03-14');
+
