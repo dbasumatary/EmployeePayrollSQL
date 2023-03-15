@@ -52,4 +52,24 @@ SELECT * FROM employee_payroll;
 /*UC5: Retrieve salary data*/
 SELECT Salary FROM employee_payroll where Name = "Kundan";       /*Show salary details for the name 'Kundan'*/
 SELECT * FROM employee_payroll WHERE Start_Date BETWEEN CAST('2023-03-12' AS DATE)AND DATE(NOW()); /*Display employee details in between the dates*/
+
+/****************************************************************************************************************/
+
+/*UC6: Add new column Gender and setting the respective genders*/
+ALTER TABLE employee_payroll ADD COLUMN Gender char(1) AFTER Name;            /*Column Gender will be added after column Name*/
+SET SQL_SAFE_UPDATES = 0;
+UPDATE employee_payroll set Gender = 'M' WHERE Name = 'Rahul' or Name = 'Kundan' or Name = 'Shubham';
+UPDATE employee_payroll set Gender = 'F' WHERE Name = 'Tanuja' or Name = 'Raima';
+SELECT * FROM employee_payroll;
+
+/*Output
++----+---------+--------+--------+------------+
+| ID | Name    | Gender | Salary | Start_Date |
++----+---------+--------+--------+------------+
+|  1 | Rahul   | M      | 150000 | 2023-03-11 |
+|  2 | Kundan  | M      | 200000 | 2023-03-13 |
+|  3 | Shubham | M      | 250000 | 2023-03-14 |
+|  4 | Tanuja  | F      | 210000 | 2023-03-12 |
+|  5 | Raima   | F      | 190000 | 2023-03-15 |
++----+---------+--------+--------+------------+*/
  

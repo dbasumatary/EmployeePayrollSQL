@@ -31,7 +31,9 @@ DESCRIBE employee_payroll;               /*This will show the empty table shown 
 INSERT INTO employee_payroll ( Name, Salary, Start_Date) values
 		( 'Rahul', 150000.00, '2023-03-11'),
 		( 'Kundan', 200000.00, '2023-03-13'),
-		( 'Shubham', 250000.00, '2023-03-14');
+		( 'Shubham', 250000.00, '2023-03-14'),
+        ( 'Tanuja', 210000.00, '2023-03-12'),
+        ( 'Raima', 190000.00, '2023-03-15');
 
 /****************************************************************************************************************/
 
@@ -45,6 +47,8 @@ SELECT * FROM employee_payroll;
 |  1 | Rahul   | 150000 | 2023-03-11 |
 |  2 | Kundan  | 200000 | 2023-03-13 |
 |  3 | Shubham | 250000 | 2023-03-14 |
+|  4 | Tanuja  | 210000 | 2023-03-12 |
+|  5 | Raima   | 190000 | 2023-03-15 |
 +----+---------+--------+------------+*/
 
 /****************************************************************************************************************/
@@ -53,4 +57,22 @@ SELECT * FROM employee_payroll;
 SELECT Salary FROM employee_payroll where Name = "Kundan";       /*Show salary details for the name 'Kundan'*/
 SELECT * FROM employee_payroll WHERE Start_Date BETWEEN CAST('2023-03-12' AS DATE)AND DATE(NOW()); /*Display employee details in between the dates*/
  
- 
+ /****************************************************************************************************************/
+
+/*UC6: Add new column Gender and setting the respective genders*/
+ALTER TABLE employee_payroll ADD COLUMN Gender char(1) AFTER Name;            /*Column Gender will be added after column Name*/
+SET SQL_SAFE_UPDATES = 0;
+UPDATE employee_payroll set Gender = 'M' WHERE Name = 'Rahul' or Name = 'Kundan' or Name = 'Shubham';
+UPDATE employee_payroll set Gender = 'F' WHERE Name = 'Tanuja' or Name = 'Raima';
+SELECT * FROM employee_payroll;
+
+/*Output
++----+---------+--------+--------+------------+
+| ID | Name    | Gender | Salary | Start_Date |
++----+---------+--------+--------+------------+
+|  1 | Rahul   | M      | 150000 | 2023-03-11 |
+|  2 | Kundan  | M      | 200000 | 2023-03-13 |
+|  3 | Shubham | M      | 250000 | 2023-03-14 |
+|  4 | Tanuja  | F      | 210000 | 2023-03-12 |
+|  5 | Raima   | F      | 190000 | 2023-03-15 |
++----+---------+--------+--------+------------+*/
